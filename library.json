@@ -1,0 +1,21 @@
+{
+    "name": "htcw_i2s_audio",
+    "version": "0.1.0",
+    "description": "Provides SFX (htcw_sfx) bindings for the I2S driver for the ESP32",
+    "keywords": ["audio","esp32", "i2s","audioI2S"],
+    "authors": {
+        "name":"honey the codewitch",
+        "homepage": "https://www.codeproject.com/Members/code-witch"
+    },
+    "license": "MIT",
+    "frameworks": "arduino",
+    "platforms": "espressif32",
+    "dependencies": {
+        "codewitch-honey-crisis/htcw_sfx": "^0.7.8"
+    },
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/codewitch-honey-crisis/htcw_i2s_audio.git"
+    }
+}
