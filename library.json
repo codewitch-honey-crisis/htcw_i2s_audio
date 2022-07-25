@@ -11,7 +11,7 @@
     "frameworks": "arduino",
     "platforms": "espressif32",
     "dependencies": {
-        "codewitch-honey-crisis/htcw_sfx": "^0.8.0"
+        "codewitch-honey-crisis/htcw_sfx": "^0.8.1"
     },
     "repository":
     {
