@@ -1,5 +1,6 @@
 #pragma once
 #include <sfx_core.hpp>
+#include "i2s_common.hpp"
 #ifndef ESP32
 #error "This library only supports the ESP32"
 #endif

@@ -1,5 +1,6 @@
 #pragma once
 #include <sfx_core.hpp>
+#include "i2s_common.hpp"
 #ifndef ESP32
 #error "This library only supports the ESP32"
 #endif
@@ -11,11 +12,6 @@
 #include "esp_log.h"
 #include "soc/rtc.h"
 namespace arduino {
-enum struct i2s_channels {
-    left = 0,
-    right,
-    both
-};
 template<int8_t MckPin, int8_t BckPin, int8_t WsPin, int8_t DOutPin, i2s_channels ChannelConfiguration = i2s_channels::both, bool UseApll = true, size_t DmaSamples = 512, size_t DmaBufferCount = 14>
 class i2s_external final : public sfx::audio_destination {
 public:
