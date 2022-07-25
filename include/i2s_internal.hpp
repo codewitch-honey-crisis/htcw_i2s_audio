@@ -11,11 +11,7 @@
 #include "esp_system.h"
 #include "esp_log.h"
 namespace arduino {
-enum struct i2s_channels {
-    left = 0,
-    right,
-    both
-};
+
 template<i2s_channels OutputChannelConfiguration = i2s_channels::both, bool UseApll = true, size_t DmaSamples = 512, size_t DmaBufferCount = 14>
 class i2s_internal final : public sfx::audio_destination {
     
