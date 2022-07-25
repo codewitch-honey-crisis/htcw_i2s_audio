@@ -15,7 +15,7 @@ enum struct i2s_channels {
     right,
     both
 };
-template<i2s_channels OutputChannelConfiguration = i2s_channels::left, bool UseApll = true, size_t DmaSamples = 512, size_t DmaBufferCount = 14>
+template<i2s_channels OutputChannelConfiguration = i2s_channels::both, bool UseApll = true, size_t DmaSamples = 512, size_t DmaBufferCount = 14>
 class i2s_internal final : public sfx::audio_destination {
     
 public:
@@ -112,6 +112,21 @@ public:
         result = copy_raw(samples,sample_count);
         vTaskDelay(0);
         return result;
+    }
+    inline bool start() {
+        if(!initialize()) {
+            return false;
+        }
+        return ESP_OK==i2s_start((i2s_port_t)0);
+    }
+    inline bool stop() {
+        if(!initialize()) {
+            return false;
+        }
+        return ESP_OK==i2s_stop((i2s_port_t)0);
+    }
+    inline void clear_dma() {
+        i2s_zero_dma_buffer((i2s_port_t)0);
     }
 };
 template<i2s_channels OutputChannelConfiguration, bool UseApll, size_t DmaSamples, size_t DmaBufferCount>

@@ -91,6 +91,7 @@ public:
             }
             i2s_set_clk((i2s_port_t)0, 44100, 16,output_channels==1?I2S_CHANNEL_MONO:I2S_CHANNEL_STEREO);
             //rtc_clk_apll_enable(1, 15, 8, 5, 6);
+            i2s_zero_dma_buffer((i2s_port_t)0);
             m_initialized = true;
         }
         return true;
@@ -122,6 +123,21 @@ public:
         result = copy_raw(samples,sample_count);
         vTaskDelay(0);
         return result;
+    }
+    inline bool start() {
+        if(!initialize()) {
+            return false;
+        }
+        return ESP_OK==i2s_start((i2s_port_t)0);
+    }
+    inline bool stop() {
+        if(!initialize()) {
+            return false;
+        }
+        return ESP_OK==i2s_stop((i2s_port_t)0);
+    }
+    inline void clear_dma() {
+        i2s_zero_dma_buffer((i2s_port_t)0);
     }
 };
 template<int8_t MckPin, int8_t BkcPin, int8_t WsPin, int8_t DOutPin, i2s_channels ChannelConfiguration, bool UseApll, size_t DmaSamples, size_t DmaBufferCount>
